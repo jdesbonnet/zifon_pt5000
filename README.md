@@ -11,7 +11,7 @@ I purchased this device for a research and development project which required a 
 
 ### Status
 
-As of 2025-04-18 I can successfull 'snoop' on packets sent from the remote control unit to the gimbal and vice versa. I can decode joystick deflection on the remote control unit and the current gimbal angles from the gimbal unit. Work on actually controlling the gimbal by transmitting packets is progressing and is not as advanced.
+As of 2025-04-18 I can successfully 'snoop' on packets sent from the remote control unit to the gimbal and vice versa. I can decode joystick deflection on the remote control unit and the current gimbal angles from the gimbal unit. Work on actually controlling the gimbal by transmitting packets is progressing and is not as advanced.
 
 ### Radio settings
 The radio protocol is based on the nRF24L01+ radio module (it's actually a Si24R1 which is a clone). It defaults to frequency channel 80 (2.480GHz). The 5 byte address is 0x52560c0702 (transmitted as little endian with 0x02 first). The symbol rate is 1Mbps, packet payload length is 16 bytes (excluding 9 bit header). 2 byte checksums are used.
@@ -29,6 +29,8 @@ Common to both gimbal and remote control: Byte index 0 I *think* is the virtual 
 Gimbal to remote control packet:  bytes index 4 to 6 (3 bytes, little endian) : 24bit azimuth angle. Multiply by ( 360 / 262144 ) to get azimuth in degrees. Payload bytes index 7 - 9 (3 bytes, little endian): 24 bit elevation axis angle.  Multiply by ( 360 / 262144 ) to get elevation axis in degrees. Note: this is not the elevation relative to the horizontal.  0 degrees is one stop of the tilt axis, so that needs to be adjusted to get elevation relative to the horizontal.  The other bytes are still to be determined but the battery status must be in there (probably the last two bytes).
 
 Remote control to gimbal packet:  Byte index 4 is the joystick left-right deflection (absolute) and byte 5 is up-down joystick deflection (absolute). I think allowed values are 0 - 8?. Byte 6 encodes if there is any deflection (bit4) and the sign (direction) of the deflection (bit2). Byte 7 is similar for the joystick up/down axis. There is a lot more to this TBD.
+
+In addition to the above two packet types, the remote control unit sends many what I assume are 'ping' packets with byte index 1 set to 0x00. The purpose of these packets is still not fully understood.
 
 ### Transmitting packets to control the gimbal
 
