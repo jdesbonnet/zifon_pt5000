@@ -26,6 +26,10 @@ Gimbal to remote control packet:  bytes index 4 to 6 (3 bytes, little endian) : 
 
 Remote control to gimbal packet:  Byte index 4 is the joystick left-right deflection (absolute) and byte 5 is up-down joystick deflection (absolute). I think allowed values are 0 - 8?. Byte 6 encodes if there is any deflection (bit4) and the sign (direction) of the deflection (bit2). Byte 7 is similar for the joystick up/down axis. There is a lot more to this TBD.
 
+### Transmitting packets to control the gimbal
+
+This seems to be more complex than I had hoped.  Retransmitting the remote control to gimbal packets will work only if the remote control unit is also switched on. So I think that means the nRF24L01 auto-ack system must be enabled. Also the motion is rough - I think the gimbal needs to recieve joystick commands in rapid succession or the stepper motor stutters. Either the remote control is interfering (the manual notes that operating two remotes at the same time will result in rough motor operation) or the micropython loop sending the packet isn't iterating fast enough.
+
 ## Remote control hardware and software
 
 This section is coming soon. It will include a nRF24L01+ to Raspberry Pi Pico 2 microcontroller hookup guide and a micropython script to listen and control the device. This should be easily extendable to any computer or microcontroller with a SPI bus eg a full Raspberry Pi (1 - 5), Arduino etc. (Actually you can probably get away without a SPI peripheral and bit-bang the SPI protocol with GPIO lines).
