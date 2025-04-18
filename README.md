@@ -9,6 +9,10 @@ I purchased this device for a research and development project which required a 
 
 ## Summary of findings
 
+### Status
+
+As of 2025-04-18 I can successfull 'snoop' on packets sent from the remote control unit to the gimbal and vice versa. I can decode joystick deflection on the remote control unit and the current gimbal angles from the gimbal unit. Work on actually controlling the gimbal by transmitting packets is progressing and is not as advanced.
+
 ### Radio settings
 The radio protocol is based on the nRF24L01+ radio module (it's actually a Si24R1 which is a clone). It defaults to frequency channel 80 (2.480GHz). The 5 byte address is 0x52560c0702 (transmitted as little endian with 0x02 first). The symbol rate is 1Mbps, packet payload length is 16 bytes (excluding 9 bit header). 2 byte checksums are used.
 
