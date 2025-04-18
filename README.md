@@ -20,7 +20,7 @@ The radio protocol is based on the nRF24L01+ radio module (it's actually a Si24R
 > [!NOTE]
 > Note: depending on which nRF24L01 library you use, you may have to deal with the 9 bit (yes, 9 bits!!) nRF24L01+ header yourself. That will involve stripping the first byte and shifting everything by one bit.
 
-Common to both gimbal and remote control: Byte index 0 I *think* is the virtual channel number which is configureable on the remote control and gimbal. Byte index 1 is the transmitting device: value of 0x37 is the gimbal transmitting to the remote control, a value of 0x3f is the remote control transmitting to the gimbal.
+Common to both gimbal and remote control: Byte index 0 I *think* is the virtual channel number which is configurable on the remote control and gimbal. Byte index 1 is the transmitting device: value of 0x37 is the gimbal transmitting to the remote control, a value of 0x3f is the remote control transmitting to the gimbal.
 
 Gimbal to remote control packet:  bytes index 4 to 6 (3 bytes, little endian) : 24bit azimuth angle. Multiply by ( 360 / 262144 ) to get azimuth in degrees. Payload bytes index 7 - 9 (3 bytes, little endian): 24 bit elevation axis angle.  Multiply by ( 360 / 262144 ) to get elevation axis in degrees. Note: this is not the elevation relative to the horizontal.  0 degrees is one stop of the tilt axis, so that needs to be adjusted to get elevation relative to the horizontal.  The other bytes are still to be determined but the battery status must be in there (probably the last two bytes).
 
@@ -28,5 +28,5 @@ Remote control to gimbal packet:  Byte index 4 is the joystick left-right deflec
 
 ## Remote control hardware and software
 
-The section coming soon. It will include a nRF24L01+ to Raspberry Pi Pico 2 microcontroller hookup guide and a micropython script to listen and control the device. This should be easily extendable to any computer or microcontroller with a SPI bus eg a full Raspberry Pi (1 - 5), Arduino etc. (Actually you can probably get away without a SPI perhiperhal and bit-bang the SPI protocol with GPIO lines).
+This section is coming soon. It will include a nRF24L01+ to Raspberry Pi Pico 2 microcontroller hookup guide and a micropython script to listen and control the device. This should be easily extendable to any computer or microcontroller with a SPI bus eg a full Raspberry Pi (1 - 5), Arduino etc. (Actually you can probably get away without a SPI peripheral and bit-bang the SPI protocol with GPIO lines).
 
