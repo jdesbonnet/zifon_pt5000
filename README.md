@@ -14,7 +14,11 @@ The radio protocol is based on the nRF24L01+ radio module (it's actually a Si24R
 
 ### Packet payload 
 
-Note: byte index 0 means the first byte of the payload, index 1 the second etc. Note: depending on which nRF24L01 library you use, you may have to deal with the 9 bit (yes, 9 bits!!) nRF24L01 header yourself. That will involve stripping the first byte and shifting everything by one bit.
+> [!NOTE]  
+> Byte index 0 means the first byte of the payload, index 1 the second etc.
+
+> [!NOTE]
+> Note: depending on which nRF24L01 library you use, you may have to deal with the 9 bit (yes, 9 bits!!) nRF24L01+ header yourself. That will involve stripping the first byte and shifting everything by one bit.
 
 Common to both gimbal and remote control: Byte index 0 I *think* is the virtual channel number which is configureable on the remote control and gimbal. Byte index 1 is the transmitting device: value of 0x37 is the gimbal transmitting to the remote control, a value of 0x3f is the remote control transmitting to the gimbal.
 
