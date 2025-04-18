@@ -10,7 +10,7 @@ I purchased this device for a research and development project which required a 
 ## Summary of findings
 
 ### Radio settings
-The radio protocol is based on the nRF24L01+ radio module (it's actually a Si24R1 which is a clone). It defaults to frequency channel 80 (2.480GHz). The address is 5 byte address 0x52560c0702 (transmitted as little endian with 0x02 first). Symbol rate is 1Mbps, packet payload length 16 bytes (excluding 9 bit header). 2 byte checksums are used.
+The radio protocol is based on the nRF24L01+ radio module (it's actually a Si24R1 which is a clone). It defaults to frequency channel 80 (2.480GHz). The 5 byte address is 0x52560c0702 (transmitted as little endian with 0x02 first). The symbol rate is 1Mbps, packet payload length is 16 bytes (excluding 9 bit header). 2 byte checksums are used.
 
 ### Packet payload 
 
