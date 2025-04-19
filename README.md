@@ -11,7 +11,9 @@ I purchased this device for a research and development project which required a 
 
 ### Status
 
-As of 2025-04-18 I can successfully 'snoop' on packets sent from the remote control unit to the gimbal and vice versa. I can decode joystick deflection on the remote control unit and the current gimbal angles from the gimbal unit. Work on actually controlling the gimbal by transmitting packets is progressing and is not as advanced.
+As of 2025-04-19 I can successfully 'snoop' on packets sent from the remote control unit to the gimbal and vice versa. I can decode joystick deflection on the remote control unit and the current gimbal angles from the gimbal unit. 
+
+Work on actually controlling the gimbal by transmitting packets is progressing but is not as advanced: I can issue gimbal commands while the remote control is switched on, however the motor runs rough (a stuttery motion similar to how it runs when attempting to control the gimbal with the two remote controls supplied - which the manual advises not to do). If the remote control is switch off I can make the motor tick just one step, but then it refuses to do anything after that. It looks like a ACK radio protocol issue.
 
 ### Radio settings
 The radio protocol is based on the nRF24L01+ radio module (it's actually a Si24R1 which is a clone). It defaults to frequency channel 80 (2.480GHz). The 5 byte address is 0x52560c0702 (transmitted as little endian with 0x02 first). The symbol rate is 1Mbps, packet payload length is 16 bytes (excluding 9 bit header). 2 byte checksums are used.
