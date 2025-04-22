@@ -29,8 +29,6 @@ The radio protocol is based on the nRF24L01+ radio module (it's actually a Si24R
 > [!NOTE]
 > Note: depending on which nRF24L01 library you use, you may have to deal with the 9 bit (yes, 9 bits!!) nRF24L01+ header yourself. That will involve stripping the first byte and shifting everything by one bit.
 
-Table of packet types.
-
 |                                | 0    | 1    | 2    | 3    | 4     | 5     | 6    | 7     | 8     | 9     |
 |--------------------------------|------|------|------|------|-------|-------|------|-------|-------|-------|
 |Gimbal to controller (angles)   | 0x02 | 0x37 | ?    | ?    | aza0  | aza1  | aza2 | ela0  | ela1  | ela2  |
