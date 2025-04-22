@@ -38,15 +38,15 @@ In addition to the above two packet types, the remote control unit sends many wh
 |--------------------------------|----|------|------|------|-------|-------|------|----------|----------|------|
 |Gimbal to controller (joystick) | ch | 0x37 | ?    | ?    | aza0  | aza1  | aza2 | ela0     | ela1     | ela2 |
 |Gimbal to controller (ping)     | ch | 0x00 | 0x00 | 0x00 | 0x00  | 0x00  | 0x00 | 0x00     | 0x00     | 0x00 |
-|Controller to gimbal            | ch | 0x3f | 0x08 | 0x08 | jsxm  | jsym  | jsxs | jsys     | ?        | ?    |
+|Controller to gimbal            | ch | 0x3f | 0x08 | 0x08 | jxm   | jym   | jxd  | jyd      | ?        | ?    |
 
 ch: channel number (default 2); 
 aza{n}: azimuth angle where azimuth_degrees = 360 * (aza0 + aza1 * 256 + aza2 * 65536) / 262144 ;
 ela{n}: elevation angle where elevation_degrees = 360 * (aza0 + aza1 * 256 + aza2 * 65536) / 262144 ;
-jsxm: joystick x-axis deflection magnitude (1 - 8) ;
-jsxs: joystick x-axis direction of deflection: 0x17 for joystick left or 0x15 for joystick right or ;
-jsym: joystick y-axis deflection magnitude (1 - 8) ;
-jsys: joystick y-axis direction of deflection: 0x13 for joystick down or 0x11 for joystick up ;
+jxm: joystick x-axis deflection magnitude (1 - 8) ;
+jxd: joystick x-axis direction of deflection: 0x17 for joystick left or 0x15 for joystick right or ;
+jym: joystick y-axis deflection magnitude (1 - 8) ;
+jyd: joystick y-axis direction of deflection: 0x13 for joystick down or 0x11 for joystick up ;
 
 
 
