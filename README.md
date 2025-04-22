@@ -60,7 +60,7 @@ different addresses).
 
 ### Transmitting packets to control the gimbal
 
-This seems to be more complex than I had hoped.  Retransmitting the remote control to gimbal packets will work only if the remote control unit is also switched on. So I think that means the nRF24L01 auto-ack system must be enabled. Also the motion is rough - I think the gimbal needs to recieve joystick commands in rapid succession or the stepper motor stutters. Either the remote control is interfering (the manual notes that operating two remotes at the same time will result in rough motor operation) or the micropython loop sending the packet isn't iterating fast enough.
+This has been implemented in Micropyhon on a Raspberry Pi Pico 2W. The caveat is that I can only send command packets one way. I have not yet been able to readback the gimbal angles. 
 
 ## Remote control hardware and software
 
