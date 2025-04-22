@@ -12,9 +12,14 @@ I purchased this device for a research and development project which required a 
 
 ### Status
 
-As of 2025-04-22 I can successfully 'snoop' on packets sent from the remote control unit to the gimbal and vice versa while on the default channel 2. I can decode joystick deflection on the remote control unit and the current gimbal angles from the gimbal unit. 
+As of 2025-04-22 I can successfully 'snoop' on packets sent from the remote control unit to the gimbal and vice versa while on the default channel 2. I can decode the joystick deflection on the remote control unit and the current gimbal angles from the gimbal unit. 
 
-I now have a Micropyton script that can control both axes of the gimbal. However I havn't been able to command the gimbal while simultaneously reading the gimbal angles. This is down to my limited understanding of the detailed operation of the nRF24L01+ radio, EnhancedShockBurst mode etc.
+I have a Micropyton script running an a Raspberry Pi Pico 2W with connected nRF24L01+ module that can control both axes (pan and tilt) of the gimbal. This happens (out of necessity) with the remote control unit switched off. If attempting to control the gimbal by script with the remote control unit switched on, the two radios interfere with each other and the motion is 'jerky'.
+
+However I have not been able to query gimbal angles while the remote control is off. Previous success in getting gimbal angles relied on passively snooping on gimbal to remote control traffic. I believe the gimabl sends gimbal angles in a 'ack with payload' to the joystick commands, which involves some careful radio configuration.
+
+My goal is a to implement a set of commands that can do either relative moves on pan/tilt to an exact number of degrees, or tell the gimbal to pan/tilt to an absolute heading / elevation angle.
+
 
 ### Radio settings
 The radio protocol is based on the nRF24L01+ radio module (it's actually a Si24R1 which is a clone). It defaults to frequency channel 80 (2.480GHz). The 5 byte address is 0x52560c0702 (transmitted as little endian with 0x02 first). The symbol rate is 1Mbps, packet payload length is 10 bytes (excluding 9 bit header). 2 byte checksums are used.
@@ -42,13 +47,15 @@ jxd: joystick x-axis direction of deflection: 0x17 for joystick left or 0x15 for
 jym: joystick y-axis deflection magnitude (1 - 8) ;
 jyd: joystick y-axis direction of deflection: 0x13 for joystick down or 0x11 for joystick up ;
 
-Channels:
+### Channels
 
-The PT5000 comes preconfigured to use channel 2. I had assumed byte index 0 of all the packets was the virtual channel number, but changing 
-channels on the gimal and controller meant I could not sniff packets any more. I tried changing the nRF24L01 frequency channel, but I still could not
-pick up any packets on channels other than 2. So it's currently unclear to me how the channel mechanism works. So for the moment I'm stuck with
-default channel 2. [ Idea: it's probably the 0x02 in the device address! - replace with channel number ]
+The PT5000 implements the concept of channels, allowing multiple gimbals and remote controls to operate in the same space. 
+The PT5000 comes preconfigured to use channel 2. It is unclear how this is implemented. The documenation here assumes
+that the gimbal is set to channel 2.
 
+I had assumed byte index 0 of all the packets was the virtual channel number and that all packets would be transmitted
+on the same frequency with the same address. However experiments have ruled this out. It's something else (possibly involving
+different addresses).
 
 
 ### Transmitting packets to control the gimbal
