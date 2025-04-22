@@ -47,7 +47,7 @@ Channels:
 The PT5000 comes preconfigured to use channel 2. I had assumed byte index 0 of all the packets was the virtual channel number, but changing 
 channels on the gimal and controller meant I could not sniff packets any more. I tried changing the nRF24L01 frequency channel, but I still could not
 pick up any packets on channels other than 2. So it's currently unclear to me how the channel mechanism works. So for the moment I'm stuck with
-default channel 2.
+default channel 2. [ Idea: it's probably the 0x02 in the device address! - replace with channel number ]
 
 
 
