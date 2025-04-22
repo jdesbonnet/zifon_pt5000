@@ -24,7 +24,7 @@ My goal is a to implement a set of commands that can do either relative moves on
 ### Radio settings
 The radio protocol is based on the nRF24L01+ radio module (it's actually a Si24R1 which is a clone). It defaults to frequency channel 80 (2.480GHz). The 5 byte address is 0x52560c0702 (transmitted as little endian with 0x02 first). The symbol rate is 1Mbps, packet payload length is 10 bytes (excluding 9 bit header). 2 byte checksums are used.
 
-### Packet payload 
+### Radio packets 
 
 > [!NOTE]
 > Note: depending on which nRF24L01 library you use, you may have to deal with the 9 bit (yes, 9 bits!!) nRF24L01+ header yourself. That will involve stripping the first byte and shifting everything by one bit.
@@ -55,8 +55,7 @@ that the gimbal is set to channel 2.
 
 I had assumed byte index 0 of all the packets was the virtual channel number and that all packets would be transmitted
 on the same frequency with the same address. However experiments have ruled this out. It's something else (possibly involving
-different addresses).
-
+different addresses, and maybe frequencies).
 
 ### Transmitting packets to control the gimbal
 
