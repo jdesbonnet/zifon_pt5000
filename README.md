@@ -34,6 +34,19 @@ Remote control to gimbal packet:  Byte index 4 is the joystick left-right deflec
 
 In addition to the above two packet types, the remote control unit sends many what I assume are 'ping' packets with byte index 1 set to 0x00. The purpose of these packets is still not fully understood.
 
+|                    | 0  | 1    | 2  | 3  | 4    | 5    | 6    | 7    | 8    | 9    |
+|--------------------|----|------|----|----|------|------|------|------|------|------|
+|Gimbal to controller| ch | 0x37 | ?  | ?  | aza0 | aza1 | aza2 | ela0 | ela1 | ela2 |
+|Controller to gimbal| ch | 0x3f | ?  | ?  | jslr | jsdu | ?    | ?    | ?    | ?    |
+
+ch: channel number (default 2); 
+aza{n}: azimuth angle ;
+ela{n}: elevation angle ;
+jslr: joystick left-right defelection magnitude ;
+jsdu: joystick down-up deflection magnitude 
+
+
+
 ### Transmitting packets to control the gimbal
 
 This seems to be more complex than I had hoped.  Retransmitting the remote control to gimbal packets will work only if the remote control unit is also switched on. So I think that means the nRF24L01 auto-ack system must be enabled. Also the motion is rough - I think the gimbal needs to recieve joystick commands in rapid succession or the stepper motor stutters. Either the remote control is interfering (the manual notes that operating two remotes at the same time will result in rough motor operation) or the micropython loop sending the packet isn't iterating fast enough.
