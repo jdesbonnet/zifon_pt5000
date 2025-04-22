@@ -34,17 +34,17 @@ Remote control to gimbal packet:  Byte index 4 is the joystick left-right deflec
 
 In addition to the above two packet types, the remote control unit sends many what I assume are 'ping' packets with byte index 1 set to 0x00. The purpose of these packets is still not fully understood.
 
-|                                | 0  | 1    | 2    | 3    | 4    | 5    | 6    | 7    | 8    | 9    |
-|--------------------------------|----|------|------|------|------|------|------|------|------|------|
-|Gimbal to controller (joystick) | ch | 0x37 | ?    | ?    | aza0 | aza1 | aza2 | ela0 | ela1 | ela2 |
-|Gimbal to controller (ping)     | ch | 0x00 | 0x00 | 0x00 | 0x00 | 0x00 | 0x00 | 0x00 | 0x00 | 0x00 |
-|Controller to gimbal            | ch | 0x3f | ?    | ?    | jslr | jsdu | ?    | ?    | ?    | ?    |
+|                                | 0  | 1    | 2    | 3    | 4     | 5     | 6    | 7        | 8        | 9    |
+|--------------------------------|----|------|------|------|-------|-------|------|----------|----------|------|
+|Gimbal to controller (joystick) | ch | 0x37 | ?    | ?    | aza0  | aza1  | aza2 | ela0     | ela1     | ela2 |
+|Gimbal to controller (ping)     | ch | 0x00 | 0x00 | 0x00 | 0x00  | 0x00  | 0x00 | 0x00     | 0x00     | 0x00 |
+|Controller to gimbal            | ch | 0x3f | ?    | ?    | jsx?  | jsx?  | ?    | jsy?     | jsy?     | ?    |
 
 ch: channel number (default 2); 
 aza{n}: azimuth angle where azimuth_degrees = 360 * (aza0 + aza1 * 256 + aza2 * 65536) / 262144 ;
 ela{n}: elevation angle where elevation_degrees = 360 * (aza0 + aza1 * 256 + aza2 * 65536) / 262144 ;
-jslr: joystick left-right defelection magnitude ;
-jsdu: joystick down-up deflection magnitude 
+jsx: joystick x-axis (left-right) ;
+jsy: joystick y-axis (down-up) ; 
 
 
 
