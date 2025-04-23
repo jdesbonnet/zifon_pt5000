@@ -16,7 +16,7 @@ As of 2025-04-22 I can successfully 'snoop' on packets sent from the remote cont
 
 I have a Micropyton script running an a Raspberry Pi Pico 2W with connected nRF24L01+ module that can control both axes (pan and tilt) of the gimbal. This happens (out of necessity) with the remote control unit switched off. If attempting to control the gimbal by script with the remote control unit switched on, the two radios interfere with each other and the motion is 'jerky'.
 
-However I have not been able to query gimbal angles while the remote control is off. Previous success in getting gimbal angles relied on passively snooping on gimbal to remote control traffic. I believe the gimabl sends gimbal angles in a 'ack with payload' to the joystick commands, which involves some careful radio configuration.
+However I have not been able to query gimbal angles while the remote control is off. Previous success in getting gimbal angles relied on passively snooping on gimbal to remote control traffic. I believe the gimbal sends gimbal angles back in a 'ack with payload' to the joystick commands. I have not (yet) been sucessfull in configuring the radio to receive these ack packets.  
 
 My goal is a to implement a set of commands that can do either relative moves on pan/tilt to an exact number of degrees, or tell the gimbal to pan/tilt to an absolute heading / elevation angle.
 
