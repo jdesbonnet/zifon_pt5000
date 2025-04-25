@@ -12,14 +12,10 @@ I purchased this device for a research and development project which required a 
 
 ### Status
 
-As of 2025-04-22 I can successfully 'snoop' on packets sent from the remote control unit to the gimbal and vice versa while on the default channel 2. I can decode the joystick deflection on the remote control unit and the current gimbal angles from the gimbal unit. 
+As of 2025-04-24 I can successfully 'snoop' on packets sent from the remote control unit to the gimbal and vice versa while on the default channel 2. I can decode the joystick deflection on the remote control unit and the current gimbal angles from the gimbal unit. 
 
-I have a Micropyton script running an a Raspberry Pi Pico 2W with connected nRF24L01+ module that can control both axes (pan and tilt) of the gimbal. This happens (out of necessity) with the remote control unit switched off. If attempting to control the gimbal by script with the remote control unit switched on, the two radios interfere with each other and the motion is 'jerky'.
-
-However I have not been able to query gimbal angles while the remote control is off. Previous success in getting gimbal angles relied on passively snooping on gimbal to remote control traffic. I believe the gimbal sends gimbal angles back in a 'ack with payload' to the joystick commands. I have not (yet) been sucessfull in configuring the radio to receive these ack packets.  
-
-My goal is a to implement a set of commands that can do either relative moves on pan/tilt to an exact number of degrees, or tell the gimbal to pan/tilt to an absolute heading / elevation angle.
-
+I also have a Micropyton script running an a Raspberry Pi Pico 2W with connected *two* nRF24L01+ radio modules which can command the gimbal to any arbitrary azimuth or elevation angle.
+The reason for two radios is that I have not yet been able to configure the nRF24L01+ modules to send a joystick command and receive the angles back. The work-around is to transmit with one radio and listen with another.
 
 ### Radio settings
 The radio protocol is based on the nRF24L01+ radio module (it's actually a Si24R1 which is a clone). It defaults to frequency channel 80 (2.480GHz). The 5 byte address is 0x52560c0702 (transmitted as little endian with 0x02 first). The symbol rate is 1Mbps, packet payload length is 10 bytes (excluding 9 bit header). 2 byte checksums are used.
