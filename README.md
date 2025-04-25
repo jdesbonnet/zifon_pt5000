@@ -53,7 +53,7 @@ different addresses, and maybe frequencies).
 
 ### Transmitting packets to control the gimbal
 
-This has been implemented in Micropyhon on a Raspberry Pi Pico 2W. The caveat is that I can only send command packets one way. I have not yet been able to readback the gimbal angles. 
+This has been implemented in Micropyhon on a Raspberry Pi Pico 2W. The caveat is that I currently need to use two nRF24L01+ modules (one to transmit, the other to listen). 
 
 ## Remote control hardware and software
 
