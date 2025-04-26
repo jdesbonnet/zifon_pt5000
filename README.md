@@ -41,6 +41,7 @@ The radio protocol is based on the nRF24L01+ radio module (it's actually a Si24R
 |Controller to gimbal: A key press                   | 0x02 | 0x2F | 0x00 | 0x00 | 0x00  | 0x00  | 0x00 | 0x00  | 0x00  | 0x00  |
 |Controller to gimbal: B key press                   | 0x02 | 0x31 | 0x00 | 0x00 | 0x00  | 0x00  | 0x00 | 0x00  | 0x00  | 0x00  |
 |Controller to gimbal: S key press (stop)            | 0x02 | 0x33 | 0x00 | 0x00 | 0x00  | 0x00  | 0x00 | 0x00  | 0x00  | 0x00  |
+|Controller to gimbal: Auto+joystick_left            | 0x02 | 0x41 | 0x00 | 0x00 | 0x00  | 0x00  | ajlr | ajdu  | 0x00  | 0x00  |
 
 Table of packet types. All packets 10 bytes of payload (index 0 - 9).
 
@@ -50,6 +51,9 @@ jxm: joystick x-axis deflection magnitude (1 - 8) ;
 jxd: joystick x-axis direction of deflection: 0x17 for joystick left or 0x15 for joystick right or ;
 jym: joystick y-axis deflection magnitude (1 - 8) ;
 jyd: joystick y-axis direction of deflection: 0x13 for joystick down or 0x11 for joystick up ;
+
+ajlr: 0x25 when auto+joystick_left, 0x23 when auto+joystick_right ;
+ajdu: 0x21 when auto+joystick_down, 0x1f when auto+joystick_up ;
 
 ### Channels
 
