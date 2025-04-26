@@ -31,7 +31,7 @@ The radio protocol is based on the nRF24L01+ radio module (it's actually a Si24R
 |----------------------------------------------------|------|------|------|------|-------|-------|------|-------|-------|-------|
 |Gimbal to controller: report gimbal angles          | 0x02 | 0x37 | ?    | ?    | aza0  | aza1  | aza2 | ela0  | ela1  | ela2  |
 |Controller to gimbal: ping? / nop                   | 0x02 | 0x00 | 0x00 | 0x00 | 0x00  | 0x00  | 0x00 | 0x00  | 0x00  | 0x00  |
-|Controller to gimbal: joystick                      | 0x02 | 0x3f | 0x08 | 0x08 | jxm   | jym   | jxd  | jyd   | ?     | ?     |
+|Controller to gimbal: joystick                      | 0x02 | 0x3f | 0x00 | 0x00 | jxm   | jym   | jxd  | jyd   | ?     | ?     |
 |Controller to gimbal: photo key                     | 0x02 | 0x19 | 0x00 | 0x00 | 0x00  | 0x00  | 0x00 | 0x00  | 0x00  | 0x00  |
 |Controller to gimbal: V key press                   | 0x02 | 0x1B | 0x00 | 0x00 | 0x00  | 0x00  | 0x00 | 0x00  | 0x00  | 0x00  |
 |Controller to gimbal: H key press                   | 0x02 | 0x1D | 0x00 | 0x00 | 0x00  | 0x00  | 0x00 | 0x00  | 0x00  | 0x00  |
