@@ -25,15 +25,15 @@ The radio protocol is based on the nRF24L01+ radio module (it's actually a Si24R
 > [!NOTE]
 > Note: depending on which nRF24L01 library you use, you may have to deal with the 9 bit (yes, 9 bits!!) nRF24L01+ header yourself. That will involve stripping the first byte and shifting everything by one bit.
 
-|                                | 0    | 1    | 2    | 3    | 4     | 5     | 6    | 7     | 8     | 9     |
-|--------------------------------|------|------|------|------|-------|-------|------|-------|-------|-------|
-|Gimbal to controller (angles)   | 0x02 | 0x37 | ?    | ?    | aza0  | aza1  | aza2 | ela0  | ela1  | ela2  |
-|Controller to gimbal (ping?)    | 0x02 | 0x00 | 0x00 | 0x00 | 0x00  | 0x00  | 0x00 | 0x00  | 0x00  | 0x00  |
-|Controller to gimbal (joystick) | 0x02 | 0x3f | 0x08 | 0x08 | jxm   | jym   | jxd  | jyd   | ?     | ?     |
-|Controller to gimbal (photo key)| 0x02 | 0x19 | 0x08 | 0x08 | 0x00  | 0x00  | 0x00 | 0x00  | 0x00  | 0x00  |
-|Controller to gimbal (goto A)   | 0x02 | 0x29 | 0x08 | 0x08 | 0x00  | 0x00  | 0x00 | 0x00  | 0x00  | 0x00  |
-|Controller to gimbal (goto B)   | 0x02 | 0x2B | 0x08 | 0x08 | 0x00  | 0x00  | 0x00 | 0x00  | 0x00  | 0x00  |
-|Controller to gimbal (scan A-B) | 0x02 | 0x2D | 0x08 | 0x08 | 0x00  | 0x00  | 0x00 | 0x00  | 0x00  | 0x00  |
+|                                  | 0    | 1    | 2    | 3    | 4     | 5     | 6    | 7     | 8     | 9     |
+|----------------------------------|------|------|------|------|-------|-------|------|-------|-------|-------|
+|Gimbal to controller (angles)     | 0x02 | 0x37 | ?    | ?    | aza0  | aza1  | aza2 | ela0  | ela1  | ela2  |
+|Controller to gimbal (ping?)      | 0x02 | 0x00 | 0x00 | 0x00 | 0x00  | 0x00  | 0x00 | 0x00  | 0x00  | 0x00  |
+|Controller to gimbal (joystick)   | 0x02 | 0x3f | 0x08 | 0x08 | jxm   | jym   | jxd  | jyd   | ?     | ?     |
+|Controller to gimbal (photo key)  | 0x02 | 0x19 | 0x08 | 0x08 | 0x00  | 0x00  | 0x00 | 0x00  | 0x00  | 0x00  |
+|Controller to gimbal (goto A)     | 0x02 | 0x29 | 0x08 | 0x08 | 0x00  | 0x00  | 0x00 | 0x00  | 0x00  | 0x00  |
+|Controller to gimbal (goto B)     | 0x02 | 0x2B | 0x08 | 0x08 | 0x00  | 0x00  | 0x00 | 0x00  | 0x00  | 0x00  |
+|Controller to gimbal (scan A↔B)   | 0x02 | 0x2D | 0x08 | 0x08 | 0x00  | 0x00  | 0x00 | 0x00  | 0x00  | 0x00  |
 
 Table of packet types. All packets 10 bytes of payload (index 0 - 9).
 
