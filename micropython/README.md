@@ -12,3 +12,5 @@ The nRF24L01+ enhanced version is not required for this (sub-optimum) two radio 
 The two radio modules will need to be hooked up to two separate SPI buses and the SPI bus initialize statement may need to be modified
 to reflect your choice of SPI wiring.
 
+When running this script it's important to switch off the 'official' remote control units as they will interfere with the operation 
+this control script (resulting in jerky motion).
