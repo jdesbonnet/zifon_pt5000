@@ -73,5 +73,5 @@ This has been implemented in Micropyhon on a Raspberry Pi Pico 2W. The caveat is
 
 ## Remote control hardware and software
 
-This section is coming soon. It will include a nRF24L01+ to Raspberry Pi Pico 2 microcontroller hookup guide and a micropython script to listen and control the device. This should be easily extendable to any computer or microcontroller with a SPI bus eg a full Raspberry Pi (1 - 5), Arduino etc. (Actually you can probably get away without a SPI peripheral and bit-bang the SPI protocol with GPIO lines).
+See [here](/micropython/README.md) 
 
