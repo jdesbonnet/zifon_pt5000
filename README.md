@@ -43,7 +43,7 @@ The radio protocol is based on the nRF24L01+ radio module (it's actually a Si24R
 |Controller to gimbal: S key press (stop)            | 0x02 | 0x33 | 0x00 | 0x00 | 0x00  | 0x00  | 0x00 | 0x00  | 0x00  | 0x00  |
 |Controller to gimbal: Auto+joystick_left            | 0x02 | 0x41 | 0x00 | 0x00 | 0x00  | 0x00  | ajlr | ajdu  | 0x00  | 0x00  |
 
-Table of packet types. All packets 10 bytes of payload (index 0 - 9).
+Table of known packet types. All packets 10 bytes of payload (index 0 - 9).
 
 aza{n}: azimuth angle where azimuth_degrees = 360 * (aza0 + aza1 * 256 + aza2 * 65536) / 262144 ;
 ela{n}: elevation angle where elevation_degrees = 360 * (aza0 + aza1 * 256 + aza2 * 65536) / 262144 ;
@@ -54,6 +54,8 @@ jyd: joystick y-axis direction of deflection: 0x13 for joystick down or 0x11 for
 
 ajlr: 0x25 when auto+joystick_left, 0x23 when auto+joystick_right ;
 ajdu: 0x21 when auto+joystick_down, 0x1f when auto+joystick_up ;
+
+The joystick packets must be sent frequently for smooth motion. From experiment a delay of more than 3ms between packets will cause juttery motion.
 
 ### Channels
 
