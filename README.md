@@ -85,3 +85,10 @@ different addresses, and maybe frequencies).
 
 See [here](/micropython/README.md) 
 
+## Open questions / help
+
+Some items I have not yet solved:
+* It would be nice to get this working with one nRF24L01+ module (using EnhancedShockBurst features).
+* I would have thought there was a go to gimbal azimuth/elevation angle, which would eliminate the need for lots of frequent joystick commands. It's possible it's there, but I haven't found it. To go to a specific gimbal azimuth/elevation angle issue joystick commands in a tight loop monitoring the returned gimbal angles.
+* The gimbal is preconfigured to "channel 2". It's unclear how other channels work.
+* I'd like to know more about the internals of the gimbal, but right now I don't have time to tear it down. Replacing its MCU with my own MCU (eg Raspberry Pi Pico) might be useful, but that will probably mean losing functions of the buttons and display.
