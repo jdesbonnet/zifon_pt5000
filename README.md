@@ -88,6 +88,11 @@ different addresses, and maybe frequencies).
 
 See [here](/micropython/README.md) 
 
+## Glossary / terminology
+
+I am using the term 'azimuth' as an alternative to the word 'pan', and 'elevation' as an alternative to 'tilt'.
+In the code I've abbreviated azimuth as 'az' and elevation as 'el'.
+
 ## Open questions / help
 
 Some items I have not yet solved:
