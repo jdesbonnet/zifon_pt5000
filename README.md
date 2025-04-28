@@ -68,6 +68,8 @@ ajdu: 0x21 when auto+joystick_down, 0x1f when auto+joystick_up ;
 
 The continuous scan commands (0x1f, 0x21, 0x23, 0x25) operate at the currently set gimbal azimuth / elevation speed which can be set by commands 0x1b, 0x1d.
 
+For commands 0x23, 0x25, the direction 'clockwise' means looking from above down on the gimbal.
+
 To move the gimbal joystick packets (type 0x3f) must be sent frequently for smooth motion. From experiment, a delay of more than 3ms between packets will cause juttery motion. It's important that no other controller device or script is running at the same time, else they will intefere with each other resulting in juttery motion.
 
 The gimbal supports quite a few commands, but a goto specified aziumuth and elevation angle command does not seem to be there :-(   This would be super useful.
