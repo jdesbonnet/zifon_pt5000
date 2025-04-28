@@ -84,6 +84,9 @@ def pt5000_get_gimbal_angles (nrf0,nrf1) :
     # being returned. A few things were tried to cear out the radio of
     # any old traffic which didn''t work. The following block of code
     # seems to work.
+    
+    nrf1.start_listening()
+    
     nrf1.flush_rx()
     for i in range(32) :    
         j = i % 4;
@@ -171,27 +174,17 @@ def pt5000_create_joystick_packet (azspeed,elspeed) :
 
     return bytearray([0x02,0x3f,0x08,0x08, azspeed,elspeed, azflags,elflags, 0,0])
 
-    
-def decode_packet_old (payload) :
-    
-    counter = 0
-    prev_azbin = -999
-    prev_elbin = -999
+def pt5000_create_set_elspeed_packet (speed) :
+    """
+    Create command packet to set the default elevation (tilt) speed of the gimbal. Allowed values 0 to 8.
+    """
+    assert speed >= 0 and speed <= 8
+    return bytearray([0x02,0x1b,0,speed, 0, 0, 0, 0, 0, 0])
 
-    payload = remove_first_n_bits (buf,9)
-        
-    payload_hex = ""
-    for i in range (11) :
-        payload_hex += f"{payload[i]:02X}"
-
-    # PT5000 gimbal -> remote controller
-    if payload[1] == 0x37 :
-        azbin = payload[6]*65536 + payload[5] * 256 + payload[4]
-        elbin = payload[9]*65536 + payload[8] * 256 + payload[7]
-        if (azbin != prev_azbin) or (elbin != prev_elbin) :
-            az = azbin * 360 / (4*65536)
-            el = elbin * 360 / (4*65536)
-            #print (f"{counter:5d} {payload_hex} az={azbin} {az:.2f}deg el={elbin} {el:.2f}deg")
-            prev_azbin = azbin
-            prev_elbin = elbin
-            
+def pt5000_create_set_azspeed_packet (speed) :
+    """
+    Create command packet to set the default azimuth (pan) speed of the gimbal. Allowed values 0 to 8.
+    """
+    assert speed >= 0 and speed <= 8
+    return bytearray([0x02,0x1d,speed,0, 0, 0, 0, 0, 0, 0])
+   
