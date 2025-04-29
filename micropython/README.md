@@ -2,7 +2,8 @@
 
 > [!WARNING]
 > This is very much in a draft state right now (as of 2025-04-26). I expect to put polish
-> on this in the coming weeks.
+> on this in the coming weeks. Also to CMA: By controlling the gimbal with your own controller there is a (small) risk of
+> corrupting the gimbal's memory in a way that may not be easily reset. Use at your own risk.
 
 You will need a PT5000 gimbal, a MCU with MicroPython installed, and *two* nRF24L01 (or compatible) radio modules.  
 This has been tested with Raspberry Pi Pico 2 / 2W microcontroller board.
