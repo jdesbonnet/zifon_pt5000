@@ -35,7 +35,8 @@ def pt5000_init_rx (nrf1) :
     # Listen on nrf1
     #nrf1 = NRF24L01(spi1, csn1, ce1, payload_size=12)
     nrf1.set_power_speed(POWER_0, SPEED_1M)
-    nrf1.set_channel (PT5000_FCH)    
+    nrf1.set_channel (PT5000_FCH)
+    nrf1.open_tx_pipe (PT5000_ADDR) # not normally used
     nrf1.open_rx_pipe(0, PT5000_ADDR)
     nrf1.reg_write(EN_AA,0)
     nrf1.set_crc(2) 
@@ -64,6 +65,13 @@ def pt5000_get_gimbal_angles (nrf0,nrf1) :
     
     nrf0: TX radio
     nrf1: RX radio
+    
+    Implementation is a little complicated. A command must be sent to the gimbal to solicit a
+    response which expected to be packet type 0x37 with gimbal angles. However only joystick
+    commands seem to work.
+    
+    Known issues: does not work when Pico 2W wifi enabled. Reason unknown.
+    
     """
 
     # Need to send something to the gimbal so that we get the angles back in response
@@ -99,7 +107,7 @@ def pt5000_get_gimbal_angles (nrf0,nrf1) :
         
     response_packet_count = 0
     last_response_packet_type = -1
-    for i in range(64) :
+    for i in range(1024) :
         
         j = i % 4;
         if (j==0) : nrf0.send(nop0)
@@ -126,6 +134,72 @@ def pt5000_get_gimbal_angles (nrf0,nrf1) :
                 pass
             
     raise Exception(f"ERROR: cannot read gimbal angles, tried {i} iterations, received {response_packet_count} response packets, last type={last_response_packet_type:02X}")
+
+def pt5000_get_gimbal_angles_using_cmd (nrf0,nrf1,cmd) :
+    """
+    Poll PT5000 gimbal for current azimuth and elevation angle (experimental version which
+    takes the command to use to poll as parameter). Command type 0x00 (NOP) sometimes works.
+    
+    nrf0: TX radio
+    nrf1: RX radio
+        
+    """
+
+    # Need to send something to the gimbal so that we get the angles back in response
+    nop0 = build_nrf24_air_packet(pt5000_create_command_packet(cmd), pid=0, no_ack=0, crc_len=2)
+    nop1 = build_nrf24_air_packet(pt5000_create_command_packet(cmd), pid=1, no_ack=0, crc_len=2)
+    nop2 = build_nrf24_air_packet(pt5000_create_command_packet(cmd), pid=2, no_ack=0, crc_len=2)
+    nop3 = build_nrf24_air_packet(pt5000_create_command_packet(cmd), pid=3, no_ack=0, crc_len=2)
+
+    
+    # Having issues where angle values which are clearly out of date are
+    # being returned. A few things were tried to cear out the radio of
+    # any old traffic which didn''t work. The following block of code
+    # seems to work.
+    
+    nrf1.start_listening()
+    nrf1.flush_rx()
+    for i in range(32) :    
+        j = i % 4;
+        if   (j==0) : nrf0.send(nop0)
+        elif (j==1) : nrf0.send(nop1)
+        elif (j==2) : nrf0.send(nop2)
+        elif (j==3) : nrf0.send(nop3)
+    nrf1.flush_rx()
+
+    
+    # Now ping the gimbal expecting a ack-with-payload containing angles in return.
+    # Since all attempts to get this to work with the 'official' micropython nrf24l01
+    # library have failed, no option but to listen for this ack in PRX mode.
+    response_packet_count = 0
+    last_response_packet_type = -1
+    for i in range(512) :
+        
+        j = i % 4;
+        if   (j==0) : nrf0.send(nop0)
+        elif (j==1) : nrf0.send(nop1)
+        elif (j==2) : nrf0.send(nop2)
+        elif (j==3) : nrf0.send(nop3)
+        #utime.sleep_us(500)
+        if nrf0.any() : print ("*",end="")
+        
+        # This can pick up on the transmitted packet, how can we avoid this?
+        while nrf1.any() :
+            response_packet_count += 1
+            #led.on()
+            buf = nrf1.recv()
+            #led.off()
+            payload = remove_first_n_bits(buf,9)
+            last_response_packet_type = payload[1]
+            if (payload[1] == 0x37) :
+                    (az,el) = pt5000_decode_angles (payload)
+                    print (f"az={az} el={el} i={i}")
+                    return az,el
+            else :
+                #print (f"P={buf_to_hex(payload)}")
+                pass
+            
+    raise Exception(f"cannot read gimbal angles, tried {i} iterations, received {response_packet_count} response packets, last type={last_response_packet_type:02X}")
 
 
 def pt5000_decode_angles (payload) :
@@ -187,4 +261,4 @@ def pt5000_create_set_azspeed_packet (speed) :
     """
     assert speed >= 0 and speed <= 8
     return bytearray([0x02,0x1d,speed,0, 0, 0, 0, 0, 0, 0])
-   
+    
