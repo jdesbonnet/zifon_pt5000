@@ -5,6 +5,9 @@
 > on this in the coming weeks. Also to CMA: By controlling the gimbal with your own controller there is a (small) risk of
 > corrupting the gimbal's memory in a way that may not be easily reset. Use at your own risk.
 
+![Raspberry Pi Pico2W controller diagram](/Zifon_PT5000_Pico2W_controller.png)
+
+
 You will need a PT5000 gimbal, a MCU with MicroPython installed, and *two* nRF24L01 (or compatible) radio modules.  
 This has been tested with Raspberry Pi Pico 2 / 2W microcontroller board.
 
