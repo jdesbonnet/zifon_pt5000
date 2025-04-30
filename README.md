@@ -1,10 +1,14 @@
 
 
 # zifon_pt5000
+
+<img align="right" width="150" alt="Zifon PT5000 camera gimbal" src="zifon_pt5000.png">
+
 Documentation of the radio protocol used by the Zifon PT5000 camera gimbal and other useful information pertaining to this device.
 
 > [!IMPORTANT]  
 > This is preliminary information which may change as I gain more experience with this device. 
+
 
 ## Background
 
