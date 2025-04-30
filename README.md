@@ -117,4 +117,4 @@ Some items I have not yet solved:
 * I'd like to know more about the internals of the gimbal, but right now I don't have time to tear it down. Replacing its MCU with my own MCU (eg Raspberry Pi Pico) might be useful, but that will probably mean losing functions of the buttons and display.
 
 ## Related documents
- * [US FCC approval application by Zifon for YT1500 controller](https://apps.fcc.gov/oetcf/eas/reports/GenericSearch.cfm) Enter 'Zifon' for the 'Applicant' field in the search engine. Sorry, deep links into this database don't seem to be allowed. Observation it seems to use the same radio modile as as PT5000.
+ * [US FCC approval application by Zifon for YT1500 controller](https://apps.fcc.gov/oetcf/eas/reports/GenericSearch.cfm) Enter 'Zifon' for the 'Applicant' field in the search engine. Sorry, deep links into this database don't seem to be allowed. Observation it seems to use the same radio module as as PT5000.
