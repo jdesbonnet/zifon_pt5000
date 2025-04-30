@@ -92,7 +92,9 @@ different addresses, and maybe frequencies).
 
 ## Remote control hardware and software
 
-See [here](/micropython/README.md) 
+See [here](/micropython/README.md) for more information.
+
+![Raspberry Pi Pico2W controller diagram](Zifon_PT5000_Pico2W_controller.png)
 
 ## Other Zifon gimbal products
 
