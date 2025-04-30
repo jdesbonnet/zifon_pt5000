@@ -66,7 +66,7 @@ hs : horizontal speed; vs : vertical speed ;
 ajlr: 0x25 when auto+joystick_left, 0x23 when auto+joystick_right ;
 ajdu: 0x21 when auto+joystick_down, 0x1f when auto+joystick_up ;
 
-The continuous scan commands (0x1f, 0x21, 0x23, 0x25) operate at the currently set gimbal azimuth / elevation speed which can be set by commands 0x1b, 0x1d. It is possible to set speeds while the pan is in operation.
+The continuous scan commands (0x1f, 0x21, 0x23, 0x25) operate at the currently set gimbal azimuth / elevation speed which can be set by commands 0x1b, 0x1d. It is possible to set speeds while the continuous scan is in operation.
 
 For commands 0x23, 0x25, the direction 'clockwise' means looking from above down on the gimbal.
 
