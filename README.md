@@ -116,5 +116,7 @@ Some items I have not yet solved:
 * The gimbal is preconfigured to "channel 2". It's unclear how other channels work.
 * I'd like to know more about the internals of the gimbal, but right now I don't have time to tear it down. Replacing its MCU with my own MCU (eg Raspberry Pi Pico) might be useful, but that will probably mean losing functions of the buttons and display.
 
+Please open a issue in this repository if you have any questions or suggestions. Thanks!
+
 ## Related documents
  * [US FCC approval application by Zifon for YT1500 controller](https://apps.fcc.gov/oetcf/eas/reports/GenericSearch.cfm) Enter 'Zifon' for the 'Applicant' field in the search engine. Sorry, deep links into this database don't seem to be allowed. Observation it seems to use the same radio module as as PT5000.
