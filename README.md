@@ -98,7 +98,7 @@ See [here](/micropython/README.md) for more information.
 
 ## Other Zifon gimbal products
 
-A search of the US FCC (Federal Communications Commission) for 'Zifon' hints that most of their products are identical. Internal photos of the YT1500 controller on the FCC site also features a Si24R1 chip. So it is likely this documentation and software will work with other Zifon gimbal products. 
+A search of the US FCC (Federal Communications Commission) for 'Zifon' hints that most of their products use identical control hardware.  Internal photos of the YT1500 controller on the FCC site also features a Si24R1 chip. So it is likely this documentation and software will work with other Zifon gimbal products. 
 
 However I know for a fact that it will not work with the YT1000 which is based on the JDY-40 radio module. See https://github.com/featherbear/zifon-yt1000-wifi-acu for information on that gimbal.
 
