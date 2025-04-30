@@ -120,3 +120,4 @@ Please open a issue in this repository if you have any questions or suggestions.
 
 ## Related documents
  * [US FCC approval application by Zifon for YT1500 controller](https://apps.fcc.gov/oetcf/eas/reports/GenericSearch.cfm) Enter 'Zifon' for the 'Applicant' field in the search engine. Sorry, deep links into this database don't seem to be allowed. Observation it seems to use the same radio module as as PT5000.
+* Some discussion about this gimbal here: https://www.talkphotography.co.uk/threads/zifon-pt-5000-anyone.763467/
