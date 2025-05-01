@@ -39,8 +39,8 @@ The radio protocol is based on the nRF24L01+ radio module (it's actually a Si24R
 |Controller to gimbal: azimuth micro-increment   *   | 0x02 | 0x15 | 0    | 0    | 0     | 0     | 0    | 0     | 0     | 0     |
 |Controller to gimbal: azimuth micro-decrement   *   | 0x02 | 0x17 | 0    | 0    | 0     | 0     | 0    | 0     | 0     | 0     |
 |Controller to gimbal: photo key                     | 0x02 | 0x19 | 0    | 0    | 0     | 0     | 0    | 0     | 0     | 0     |
-|Controller to gimbal: V key press                   | 0x02 | 0x1B | ?hs? | ?vs? | 0x00  | 0x00  | 0x00 | 0x00  | 0x00  | 0x00  |
-|Controller to gimbal: H key press                   | 0x02 | 0x1D | ?hs? | ?vs? | 0x00  | 0x00  | 0x00 | 0x00  | 0x00  | 0x00  |
+|Controller to gimbal: V key press / set az speed    | 0x02 | 0x1B | azs  | els  | 0     | 0     | 0    | 0     | 0     | 0     |
+|Controller to gimbal: H key press / set el speed    | 0x02 | 0x1D | azs  | els  | 0     | 0     | 0    | 0     | 0     | 0     |
 |Controller to gimbal: continuous scan up/down/up    | 0x02 | 0x1F | 0x00 | 0x00 | 0x00  | 0x00  | 0x00 | 0x00  | 0x00  | 0x00  |
 |Controller to gimbal: continuous scan up/down/up    | 0x02 | 0x21 | 0x00 | 0x00 | 0x00  | 0x00  | 0x00 | 0x00  | 0x00  | 0x00  |
 |Controller to gimbal: continuous scan anti-clockwise| 0x02 | 0x23 | 0x00 | 0x00 | 0x00  | 0x00  | 0x00 | 0x00  | 0x00  | 0x00  |
