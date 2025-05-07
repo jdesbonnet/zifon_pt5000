@@ -46,8 +46,8 @@ The radio protocol is based on the nRF24L01+ radio module (it's actually a Si24R
 |Controller to gimbal: continuous scan anti-clockwise| 0x02 | 0x23 | 0    | 0    | 0     | 0     | 0    | 0     | 0     | 0     |
 |Controller to gimbal: continuous scan      clockwise| 0x02 | 0x25 | 0    | 0    | 0     | 0     | 0    | 0     | 0     | 0     |
 |Controller to gimbal: Auto+A key press (goto A)     | 0x02 | 0x29 | 0    | 0    | 0     | 0     | 0    | 0     | 0     | 0     |
-|Controller to gimbal: Auto+B key press (goto B)     | 0x02 | 0x2B | 0x00 | 0x00 | 0x00  | 0x00  | 0x00 | 0x00  | 0x00  | 0x00  |
-|Controller to gimbal: Auto+S key press (scan A↔B)   | 0x02 | 0x2D | 0x00 | 0x00 | 0x00  | 0x00  | 0x00 | 0x00  | 0x00  | 0x00  |
+|Controller to gimbal: Auto+B key press (goto B)     | 0x02 | 0x2B | 0    | 0    | 0     | 0     | 0    | 0     | 0     | 0     |
+|Controller to gimbal: Auto+S key press (scan A↔B)   | 0x02 | 0x2D | 0    | 0    | 0     | 0     | 0    | 0     | 0     | 0     |
 |Controller to gimbal: A key press                   | 0x02 | 0x2F | 0x00 | 0x00 | 0x00  | 0x00  | 0x00 | 0x00  | 0x00  | 0x00  |
 |Controller to gimbal: B key press                   | 0x02 | 0x31 | 0x00 | 0x00 | 0x00  | 0x00  | 0x00 | 0x00  | 0x00  | 0x00  |
 |Controller to gimbal: S key press (stop)            | 0x02 | 0x33 | 0x00 | 0x00 | 0x00  | 0x00  | 0x00 | 0x00  | 0x00  | 0x00  |
