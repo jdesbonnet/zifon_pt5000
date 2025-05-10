@@ -48,12 +48,12 @@ The radio protocol is based on the nRF24L01+ radio module (it's actually a Si24R
 |Controller to gimbal: Auto+A key press (goto A)     | 0x02 | 0x29 | 0    | 0    | 0     | 0     | 0    | 0     | 0     | 0     |
 |Controller to gimbal: Auto+B key press (goto B)     | 0x02 | 0x2B | 0    | 0    | 0     | 0     | 0    | 0     | 0     | 0     |
 |Controller to gimbal: Auto+S key press (scan A↔B)   | 0x02 | 0x2D | 0    | 0    | 0     | 0     | 0    | 0     | 0     | 0     |
-|Controller to gimbal: A key press                   | 0x02 | 0x2F | 0x00 | 0x00 | 0x00  | 0x00  | 0x00 | 0x00  | 0x00  | 0x00  |
-|Controller to gimbal: B key press                   | 0x02 | 0x31 | 0x00 | 0x00 | 0x00  | 0x00  | 0x00 | 0x00  | 0x00  | 0x00  |
-|Controller to gimbal: S key press (stop)            | 0x02 | 0x33 | 0x00 | 0x00 | 0x00  | 0x00  | 0x00 | 0x00  | 0x00  | 0x00  |
+|Controller to gimbal: A key press                   | 0x02 | 0x2F | 0    | 0    | 0     | 0     | 0    | 0     | 0     | 0     |
+|Controller to gimbal: B key press                   | 0x02 | 0x31 | 0    | 0    | 0     | 0     | 0    | 0     | 0     | 0     |
+|Controller to gimbal: S key press (stop)            | 0x02 | 0x33 | 0    | 0    | 0     | 0     | 0    | 0     | 0     | 0     |
 |Gimbal to controller: report gimbal angles          | 0x02 | 0x37 | bat0?| bat1?| aza0  | aza1  | aza2 | ela0  | ela1  | ela2  |
-|Controller to gimbal: joystick                      | 0x02 | 0x3f | 0x00 | 0x00 | jxm   | jym   | jxd  | jyd   | 0x00  | 0x00  |
-|Controller to gimbal: Auto+joystick                 | 0x02 | 0x41 | 0x00 | 0x00 | 0x00  | 0x00  | ajlr | ajdu  | 0x00  | 0x00  |
+|Controller to gimbal: joystick                      | 0x02 | 0x3f | 0    | 0    | jxm   | jym   | jxd  | jyd   | 0     | 0     |
+|Controller to gimbal: Auto+joystick                 | 0x02 | 0x41 | 0    | 0    | 0     | 0     | ajlr | ajdu  | 0     | 0     |
 |Controller to gimbal: Set A to current angles       | 0x02 | 0x43 | 0x00 | 0x00 | 0x00  | 0x00  | 0x00 | 0x00  | 0x00  | 0x00  |
 |Controller to gimbal: Set B to current angles       | 0x02 | 0x44 | 0x00 | 0x00 | 0x00  | 0x00  | 0x00 | 0x00  | 0x00  | 0x00  |
 
