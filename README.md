@@ -54,8 +54,8 @@ The radio protocol is based on the nRF24L01+ radio module (it's actually a Si24R
 |Gimbal to controller: report gimbal angles          | 0x02 | 0x37 | bat0?| bat1?| aza0  | aza1  | aza2 | ela0  | ela1  | ela2  |
 |Controller to gimbal: joystick                      | 0x02 | 0x3f | 0    | 0    | jxm   | jym   | jxd  | jyd   | 0     | 0     |
 |Controller to gimbal: Auto+joystick                 | 0x02 | 0x41 | 0    | 0    | 0     | 0     | ajlr | ajdu  | 0     | 0     |
-|Controller to gimbal: Set A to current angles       | 0x02 | 0x43 | 0x00 | 0x00 | 0x00  | 0x00  | 0x00 | 0x00  | 0x00  | 0x00  |
-|Controller to gimbal: Set B to current angles       | 0x02 | 0x44 | 0x00 | 0x00 | 0x00  | 0x00  | 0x00 | 0x00  | 0x00  | 0x00  |
+|Controller to gimbal: Set A to current angles       | 0x02 | 0x43 | 0    | 0    | 0     | 0     | 0    | 0     | 0     | 0     |
+|Controller to gimbal: Set B to current angles       | 0x02 | 0x44 | 0    | 0    | 0     | 0     | 0    | 0     | 0     | 0     |
 
 Table of known packet types. All packets 10 bytes of payload (index 0 - 9).  * Commands discovered by experimentation: not observed being transmitted by the controller.
 
