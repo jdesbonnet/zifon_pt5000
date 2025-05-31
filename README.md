@@ -23,7 +23,7 @@ As of 2025-05-31: Using a python script on a Raspberry Pi I can successfully sen
 ### Radio settings
 The radio protocol is based on the nRF24L01+ radio module (it's actually a Si24R1 which is a clone). It defaults to frequency channel 80 (2.480GHz). The 5 byte address is 0x52560c0702 (transmitted as little endian with 0x02 first). The symbol rate is 1Mbps. Packet payload length is 11 bytes. 2 byte checksums are used.
 
-The gimbal is configured to be a PRX device (see nRF24L01+ datasheet section 7.5.2) and the controllers are configured to be PTX devices (see see nRF24L01+ datasheet section 7.5.1). PTX devices initiate a transaction by sending a packet. PRX devices react to incoming packets by issuing an acknowledgment. The gimbal (PRX) will never send any radio trafic unless a controller (PTX) initiates it.
+The gimbal is configured to be a PRX device (see nRF24L01+ datasheet section 7.5.2) and the controllers are configured to be PTX devices (see nRF24L01+ datasheet section 7.5.1). PTX devices initiate a transaction by sending a packet. PRX devices react to incoming packets by issuing an acknowledgment. The gimbal (PRX) will never send any radio traffic unless a controller (PTX) initiates it.
 
 
 ### Radio packets 
