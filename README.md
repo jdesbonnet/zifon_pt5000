@@ -18,10 +18,7 @@ I purchased this device for a research and development project which required a 
 
 ### Status
 
-As of 2025-04-29 I can successfully 'snoop' on packets sent from the remote control unit to the gimbal and vice versa while on the default channel 2. I can decode the joystick deflection on the remote control unit and the current gimbal angles from the gimbal unit. 
-
-I also have a Micropyton script running an a Raspberry Pi Pico 2W with connected *two* nRF24L01+ radio modules which can command the gimbal to any arbitrary azimuth or elevation angle.
-The reason for two radios is that I have not yet been able to configure the nRF24L01+ modules to send a joystick command and receive the angles back. The work-around is to transmit with one radio and listen with another. New script which accepts commands over a WiFi connection. Radio to gimbal communication is still unreliable which, best I can tell, is related to EnhancedShockBurst radio state management, not helped for the fact the 'official' Micropython nRF24L01 library does not support it directly.
+As of 2025-05-31: Using a python script on a Raspberry Pi I can successfully send pan/tilt/stop commands without any issue. In response to any command (including a no-operation/ping command) the gimbal returns an acknowledgement packet with data which includes the current azimuth/elevation angle and battery state. I'm still having some trouble reliably receving that ack packet, but I can receive it sufficently often to be able to implement a 'pan to azimuth' routine while monitoring the angles in real time and stopping the gimbal at close to the desired angle.
 
 ### Radio settings
 The radio protocol is based on the nRF24L01+ radio module (it's actually a Si24R1 which is a clone). It defaults to frequency channel 80 (2.480GHz). The 5 byte address is 0x52560c0702 (transmitted as little endian with 0x02 first). The symbol rate is 1Mbps. Packet payload length is 11 bytes. 2 byte checksums are used.
