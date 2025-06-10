@@ -1,9 +1,11 @@
 # MicroPython script to control Zifon PT5000 camera gimbal
 
 > [!WARNING]
-> This is very much in a draft state right now (as of 2025-04-26). I expect to put polish
-> on this in the coming weeks. Also to CMA: By controlling the gimbal with your own controller there is a (small) risk of
-> corrupting the gimbal's memory in a way that may not be easily reset. Use at your own risk.
+>
+> Update 2025-06-10: The code here is now obsolete. New python code running on a Raspberry Pi 5
+> that can interface with a nRF24L01+ (or clone) on its SPI bus will be posted soon.
+> 
+
 
 ![Raspberry Pi Pico2W controller diagram](/Zifon_PT5000_Pico2W_controller.png)
 
