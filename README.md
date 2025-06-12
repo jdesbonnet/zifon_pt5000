@@ -45,20 +45,20 @@ This packet is sent by means of an auto-acknowledgment with data in response to 
 | Photo key press                                    | 0x02 | 0x19 | 0    | 0    | 0     | 0     | 0    | 0     | 0     | 0     |  0  |
 | V key press / set el speed                         | 0x02 | 0x1B | azs  | els  | 0     | 0     | 0    | 0     | 0     | 0     |  0  |
 | H key press / set az speed                         | 0x02 | 0x1D | azs  | els  | 0     | 0     | 0    | 0     | 0     | 0     |  0  |
-|Controller to gimbal: continuous scan up/down/up    | 0x02 | 0x1F | 0    | 0    | 0     | 0     | 0    | 0     | 0     | 0     |  0  |
-|Controller to gimbal: continuous scan down/up/down  | 0x02 | 0x21 | 0    | 0    | 0     | 0     | 0    | 0     | 0     | 0     |  0  |
-|Controller to gimbal: continuous scan anti-clockwise| 0x02 | 0x23 | 0    | 0    | 0     | 0     | 0    | 0     | 0     | 0     |  0  |
-|Controller to gimbal: continuous scan      clockwise| 0x02 | 0x25 | 0    | 0    | 0     | 0     | 0    | 0     | 0     | 0     |  0  |
-|Controller to gimbal: Auto+A key press (goto A)     | 0x02 | 0x29 | 0    | 0    | 0     | 0     | 0    | 0     | 0     | 0     |  0  |
-|Controller to gimbal: Auto+B key press (goto B)     | 0x02 | 0x2B | 0    | 0    | 0     | 0     | 0    | 0     | 0     | 0     |  0  |
-|Controller to gimbal: Auto+S key press (scan A↔B)   | 0x02 | 0x2D | 0    | 0    | 0     | 0     | 0    | 0     | 0     | 0     |  0  |
-|Controller to gimbal: A key press                   | 0x02 | 0x2F | 0    | 0    | 0     | 0     | 0    | 0     | 0     | 0     |  0  |
-|Controller to gimbal: B key press                   | 0x02 | 0x31 | 0    | 0    | 0     | 0     | 0    | 0     | 0     | 0     |  0  |
-|Controller to gimbal: S key press (stop)            | 0x02 | 0x33 | 0    | 0    | 0     | 0     | 0    | 0     | 0     | 0     |  0  |
-|Controller to gimbal: joystick                      | 0x02 | 0x3F | 0    | 0    | jxm   | jym   | jxd  | jyd   | 0     | 0     |  0  |
-|Controller to gimbal: Auto+joystick                 | 0x02 | 0x41 | 0    | 0    | 0     | 0     | ajlr | ajdu  | 0     | 0     |  0  |
-|Controller to gimbal: Set A to current angles       | 0x02 | 0x43 | 0    | 0    | 0     | 0     | 0    | 0     | 0     | 0     |  0  |
-|Controller to gimbal: Set B to current angles       | 0x02 | 0x44 | 0    | 0    | 0     | 0     | 0    | 0     | 0     | 0     |  0  |
+| Continuous scan up/down/up                          | 0x02 | 0x1F | 0    | 0    | 0     | 0     | 0    | 0     | 0     | 0     |  0  |
+| Continuous scan down/up/down                        | 0x02 | 0x21 | 0    | 0    | 0     | 0     | 0    | 0     | 0     | 0     |  0  |
+| Continuous scan anti-clockwise                      | 0x02 | 0x23 | 0    | 0    | 0     | 0     | 0    | 0     | 0     | 0     |  0  |
+| Continuous scan      clockwise                      | 0x02 | 0x25 | 0    | 0    | 0     | 0     | 0    | 0     | 0     | 0     |  0  |
+| Auto+A key press (goto A)                           | 0x02 | 0x29 | 0    | 0    | 0     | 0     | 0    | 0     | 0     | 0     |  0  |
+| Auto+B key press (goto B)                           | 0x02 | 0x2B | 0    | 0    | 0     | 0     | 0    | 0     | 0     | 0     |  0  |
+| Auto+S key press (scan A↔B)                         | 0x02 | 0x2D | 0    | 0    | 0     | 0     | 0    | 0     | 0     | 0     |  0  |
+| A key press                                         | 0x02 | 0x2F | 0    | 0    | 0     | 0     | 0    | 0     | 0     | 0     |  0  |
+| B key press                                         | 0x02 | 0x31 | 0    | 0    | 0     | 0     | 0    | 0     | 0     | 0     |  0  |
+| S key press (stop)                                  | 0x02 | 0x33 | 0    | 0    | 0     | 0     | 0    | 0     | 0     | 0     |  0  |
+| Joystick deflection                                 | 0x02 | 0x3F | 0    | 0    | jxm   | jym   | jxd  | jyd   | 0     | 0     |  0  |
+| Auto key + joystick deflection                      | 0x02 | 0x41 | 0    | 0    | 0     | 0     | ajlr | ajdu  | 0     | 0     |  0  |
+| Set A to current angles                             | 0x02 | 0x43 | 0    | 0    | 0     | 0     | 0    | 0     | 0     | 0     |  0  |
+| Set B to current angles                             | 0x02 | 0x44 | 0    | 0    | 0     | 0     | 0    | 0     | 0     | 0     |  0  |
 
 Table of known packet types. All packets 10 bytes of payload (index 0 - 9).  * Commands discovered by experimentation: not observed being transmitted by the controller.
 
