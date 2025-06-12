@@ -36,10 +36,10 @@ The gimbal is configured to be a PRX device (see nRF24L01+ datasheet section 7.5
 |Controller to gimbal: azimuth micro-increment   *   | 0x02 | 0x15 | 0    | 0    | 0     | 0     | 0    | 0     | 0     | 0     |  0  |
 |Controller to gimbal: azimuth micro-decrement   *   | 0x02 | 0x17 | 0    | 0    | 0     | 0     | 0    | 0     | 0     | 0     |  0  |
 |Controller to gimbal: photo key                     | 0x02 | 0x19 | 0    | 0    | 0     | 0     | 0    | 0     | 0     | 0     |  0  |
-|Controller to gimbal: V key press / set az speed    | 0x02 | 0x1B | azs  | els  | 0     | 0     | 0    | 0     | 0     | 0     |  0  |
-|Controller to gimbal: H key press / set el speed    | 0x02 | 0x1D | azs  | els  | 0     | 0     | 0    | 0     | 0     | 0     |  0  |
+|Controller to gimbal: V key press / set el speed    | 0x02 | 0x1B | azs  | els  | 0     | 0     | 0    | 0     | 0     | 0     |  0  |
+|Controller to gimbal: H key press / set az speed    | 0x02 | 0x1D | azs  | els  | 0     | 0     | 0    | 0     | 0     | 0     |  0  |
 |Controller to gimbal: continuous scan up/down/up    | 0x02 | 0x1F | 0    | 0    | 0     | 0     | 0    | 0     | 0     | 0     |  0  |
-|Controller to gimbal: continuous scan up/down/up    | 0x02 | 0x21 | 0    | 0    | 0     | 0     | 0    | 0     | 0     | 0     |  0  |
+|Controller to gimbal: continuous scan down/up/down  | 0x02 | 0x21 | 0    | 0    | 0     | 0     | 0    | 0     | 0     | 0     |  0  |
 |Controller to gimbal: continuous scan anti-clockwise| 0x02 | 0x23 | 0    | 0    | 0     | 0     | 0    | 0     | 0     | 0     |  0  |
 |Controller to gimbal: continuous scan      clockwise| 0x02 | 0x25 | 0    | 0    | 0     | 0     | 0    | 0     | 0     | 0     |  0  |
 |Controller to gimbal: Auto+A key press (goto A)     | 0x02 | 0x29 | 0    | 0    | 0     | 0     | 0    | 0     | 0     | 0     |  0  |
