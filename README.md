@@ -26,18 +26,25 @@ The radio protocol is based on the nRF24L01+ radio module (it's actually a Si24R
 The gimbal is configured to be a PRX device (see nRF24L01+ datasheet section 7.5.2) and the controllers are configured to be PTX devices (see nRF24L01+ datasheet section 7.5.1). PTX devices initiate a transaction by sending a packet. PRX devices react to incoming packets by issuing an acknowledgment. The gimbal (PRX) will never send any radio traffic unless a controller (PTX) initiates it.
 
 
-### Radio packets 
+### Radio packets (gimbal to controller)
+|                                                    | 0    | 1    | 2    | 3    | 4     | 5     | 6    | 7     | 8     | 9     |  10 |
+|----------------------------------------------------|------|------|------|------|-------|-------|------|-------|-------|-------|-----|
+| Report gimbal status (angles and battery)          | 0x02 | 0x37 | azs  | els  | aza0  | aza1  | aza2 | ela0  | ela1  | ela2  | bat |
+
+This packet is sent by means of an auto-acknowledgment with data in response to any of the commands below.
+
+### Radio packets (controller to gimbal)
 
 |                                                    | 0    | 1    | 2    | 3    | 4     | 5     | 6    | 7     | 8     | 9     |  10 |
 |----------------------------------------------------|------|------|------|------|-------|-------|------|-------|-------|-------|-----|
-|Controller to gimbal: ping / nop                    | 0x02 | 0x00 | 0    | 0    | 0     | 0     | 0    | 0     | 0     | 0     |  0  |
-|Controller to gimbal: elevation micro-increment *   | 0x02 | 0x11 | 0    | 0    | 0     | 0     | 0    | 0     | 0     | 0     |  0  |
-|Controller to gimbal: elevation micro-decrement *   | 0x02 | 0x13 | 0    | 0    | 0     | 0     | 0    | 0     | 0     | 0     |  0  |
-|Controller to gimbal: azimuth micro-increment   *   | 0x02 | 0x15 | 0    | 0    | 0     | 0     | 0    | 0     | 0     | 0     |  0  |
-|Controller to gimbal: azimuth micro-decrement   *   | 0x02 | 0x17 | 0    | 0    | 0     | 0     | 0    | 0     | 0     | 0     |  0  |
-|Controller to gimbal: photo key                     | 0x02 | 0x19 | 0    | 0    | 0     | 0     | 0    | 0     | 0     | 0     |  0  |
-|Controller to gimbal: V key press / set el speed    | 0x02 | 0x1B | azs  | els  | 0     | 0     | 0    | 0     | 0     | 0     |  0  |
-|Controller to gimbal: H key press / set az speed    | 0x02 | 0x1D | azs  | els  | 0     | 0     | 0    | 0     | 0     | 0     |  0  |
+| Ping / nop                                         | 0x02 | 0x00 | 0    | 0    | 0     | 0     | 0    | 0     | 0     | 0     |  0  |
+| Elevation micro-increment *                        | 0x02 | 0x11 | 0    | 0    | 0     | 0     | 0    | 0     | 0     | 0     |  0  |
+| Elevation micro-decrement *                        | 0x02 | 0x13 | 0    | 0    | 0     | 0     | 0    | 0     | 0     | 0     |  0  |
+| Azimuth micro-increment  *                         | 0x02 | 0x15 | 0    | 0    | 0     | 0     | 0    | 0     | 0     | 0     |  0  |
+| Azimuth micro-decrement   *                        | 0x02 | 0x17 | 0    | 0    | 0     | 0     | 0    | 0     | 0     | 0     |  0  |
+| Photo key press                                    | 0x02 | 0x19 | 0    | 0    | 0     | 0     | 0    | 0     | 0     | 0     |  0  |
+| V key press / set el speed                         | 0x02 | 0x1B | azs  | els  | 0     | 0     | 0    | 0     | 0     | 0     |  0  |
+| H key press / set az speed                         | 0x02 | 0x1D | azs  | els  | 0     | 0     | 0    | 0     | 0     | 0     |  0  |
 |Controller to gimbal: continuous scan up/down/up    | 0x02 | 0x1F | 0    | 0    | 0     | 0     | 0    | 0     | 0     | 0     |  0  |
 |Controller to gimbal: continuous scan down/up/down  | 0x02 | 0x21 | 0    | 0    | 0     | 0     | 0    | 0     | 0     | 0     |  0  |
 |Controller to gimbal: continuous scan anti-clockwise| 0x02 | 0x23 | 0    | 0    | 0     | 0     | 0    | 0     | 0     | 0     |  0  |
@@ -48,7 +55,6 @@ The gimbal is configured to be a PRX device (see nRF24L01+ datasheet section 7.5
 |Controller to gimbal: A key press                   | 0x02 | 0x2F | 0    | 0    | 0     | 0     | 0    | 0     | 0     | 0     |  0  |
 |Controller to gimbal: B key press                   | 0x02 | 0x31 | 0    | 0    | 0     | 0     | 0    | 0     | 0     | 0     |  0  |
 |Controller to gimbal: S key press (stop)            | 0x02 | 0x33 | 0    | 0    | 0     | 0     | 0    | 0     | 0     | 0     |  0  |
-|Gimbal to controller: report gimbal angles          | 0x02 | 0x37 | azs  | els  | aza0  | aza1  | aza2 | ela0  | ela1  | ela2  | bat |
 |Controller to gimbal: joystick                      | 0x02 | 0x3F | 0    | 0    | jxm   | jym   | jxd  | jyd   | 0     | 0     |  0  |
 |Controller to gimbal: Auto+joystick                 | 0x02 | 0x41 | 0    | 0    | 0     | 0     | ajlr | ajdu  | 0     | 0     |  0  |
 |Controller to gimbal: Set A to current angles       | 0x02 | 0x43 | 0    | 0    | 0     | 0     | 0    | 0     | 0     | 0     |  0  |
